@@ -26,11 +26,11 @@ jobs:
         echo "https://nuget.pkg.github.com/$env:GITHUB_REPOSITORY_OWNER"
 
 
-    - name: Delete KubernetesClient old Package Versions
-      uses: actions/delete-package-versions@v3
-      with:
-        owner: "$env:GITHUB_REPOSITORY_OWNER"
-        repo: "https://nuget.pkg.github.com/$env:GITHUB_REPOSITORY_OWNER"
-        package-name: "KubernetesClient"
-        min-versions-to-keep: 10
-        token: "${{ secrets.GITHUB_TOKEN }}"
+    #- name: Delete KubernetesClient old Package Versions
+    #  uses: actions/delete-package-versions@v3
+    #  with:
+    #    owner: "$env:GITHUB_REPOSITORY_OWNER"
+    #    repo: "https://nuget.pkg.github.com/$env:GITHUB_REPOSITORY_OWNER"
+    #    package-name: "KubernetesClient"
+    #    min-versions-to-keep: 10
+    #    token: "${{ secrets.GITHUB_TOKEN }}"
