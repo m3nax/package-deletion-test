@@ -30,7 +30,7 @@ jobs:
       uses: actions/delete-package-versions@v3
       with:
         owner: "$env:GITHUB_REPOSITORY_OWNER"
-        repo: "https://nuget.pkg.github.com/$env:GITHUB_REPOSITORY_OWNER/index.json"
+        repo: "package-deletion-test"
         package-name: "Test-Package"
         min-versions-to-keep: 3
         token: "${{ secrets.GITHUB_TOKEN }}"
