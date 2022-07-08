@@ -31,6 +31,7 @@ jobs:
       with:
         owner: ${{ env.GITHUB_REPOSITORY_OWNER }}
         repo: ${{ github.event.repository.name }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         package-name: ${{ matrix.nuget-package }}
         min-versions-to-keep: 3
-        token: ${{ secrets.GITHUB_TOKEN }}
+        
