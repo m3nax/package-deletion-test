@@ -33,4 +33,4 @@ jobs:
         repo: ${{ github.event.repository.name }}
         package-name: ${{ matrix.nuget-package }}
         min-versions-to-keep: 3
-        token: "${{ secrets.GITHUB_TOKEN }}"
+        token: ${{ secrets.GITHUB_TOKEN }}
