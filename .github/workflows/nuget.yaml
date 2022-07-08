@@ -14,23 +14,23 @@ jobs:
       with:
         fetch-depth: 0
   
-  delete-old-packaged:
+  
+  ## Remove old versions of packages form github NuGet feed
+  nuget-delete-old-packages:
+    needs: [nuget]
     strategy:
       matrix:
-        nuget-package: ["Test-Package"]
+        nuget-package: 
+        - "Test-Package"
+        - "Test-Package-2"
     runs-on: ubuntu-latest
     
     steps:
-    - name: .NET 6.x SDK
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: 6.0.x
-
-    - name: Delete old NuGet package versions
+    - name: Delete old NuGet packages
       uses: actions/delete-package-versions@v3
       with:
         owner: ${{ env.GITHUB_REPOSITORY_OWNER }}
-        repo: "package-deletion-test"
+        repo: ${{ github.repository }}
         package-name: ${{ matrix.nuget-package }}
         min-versions-to-keep: 3
         token: "${{ secrets.GITHUB_TOKEN }}"
