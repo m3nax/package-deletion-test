@@ -25,7 +25,7 @@ jobs:
       matrix:
         nuget-package: 
         - "Test-Package"
-        - "Test-Package-2"
+        - "Test-Package2"
     runs-on: ubuntu-latest
     
     steps:
