@@ -6,7 +6,9 @@ on:
     
 jobs:
   nuget:
-
+    strategy:
+      matrix:
+        nuget-package: ["Test-Package"]
     runs-on: windows-latest
 
     steps:
@@ -20,17 +22,17 @@ jobs:
         dotnet-version: 6.0.x
         
         
-    - name: temp
-      run: |
-        echo "$env:GITHUB_REPOSITORY_OWNER"
-        echo "https://nuget.pkg.github.com/$env:GITHUB_REPOSITORY_OWNER"
+    #- name: temp
+    #  run: |
+    #    echo "$env:GITHUB_REPOSITORY_OWNER"
+    #    echo "https://nuget.pkg.github.com/$env:GITHUB_REPOSITORY_OWNER"
 
 
-    - name: Delete KubernetesClient old Package Versions
+    - name: Delete old NuGet package versions
       uses: actions/delete-package-versions@v3
       with:
-        owner: "github"
+        owner: $env:GITHUB_REPOSITORY_OWNER
         repo: "package-deletion-test"
-        package-name: "Test-Package"
+        package-name: ${{ matrix.nuget-package }}
         min-versions-to-keep: 3
         token: "${{ secrets.GITHUB_TOKEN }}"
